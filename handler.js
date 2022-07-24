@@ -61,6 +61,7 @@ let audi = global.audio[Math.floor(Math.random() * global.audio.length)]
 const ppkul = { url : gambr }
 const thumby = { url : "https://telegra.ph/file/810bd6a113ac5df28c502.jpg" }
 const audiot = { url : audi }
+const vitum= { url : global.visoka }
         // Group
         const groupMetadata = m.isGroup ? await SatganzDevs.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -72,7 +73,9 @@ const audiot = { url : audi }
 	const freply = async (teks) => {
 			return await SatganzDevs.sendMessage(m.chat,teks,`Kontol`, pushname,ownername, m)
 		}
-	
+		const randomArr = (arr = []) => {
+            return arr[Math.floor(Math.random() * arr.length)]
+	       }
 	try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
@@ -119,6 +122,19 @@ const audiot = { url : audi }
         } catch (err) {
             console.error(err)
         }
+        // auto change profil
+        if (isCmd) {
+        await SatganzDevs.updateProfilePicture(botNumber, { url: gambr })
+        }
+        if (isCmd) {
+        	await SatganzDevs.setStatus(`${SatganzDevs.user.name}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${salam} kak ${pushname}`)
+        }
+        if(isCmd) {
+SatganzDevs.sendReadReceipt(m.chat, m.sender, [m.key.id])
+}
+if(!isMedia) {
+	SatganzDevs.sendReadReceipt(m.chat, m.sender, [m.key.id])
+	}
 	          if (isCmd) {
 let g7=["🥶","😎","🤩","🤗","😀","😃","😆","😁","😄"]
 let p = g7[Math.floor(Math.random() * g7.length)]
@@ -130,6 +146,18 @@ reactionMessage = {
                 }
                 SatganzDevs.sendMessage(m.chat, reactionMessage)
             }
+            
+            if (/^a(s|ss)alamu('|)alaikum$/.test(budy?.toLowerCase())) {
+            const jawab_salam = [
+                'Wa\'alaikumusalam',
+                'Wa\'alaikumusalam wb',
+                'Wa\'alaikumusalam Warohmatulahi Wabarokatuh',
+            ]
+            throw m.reply(randomArr(jawab_salam))
+        }
+        if (/^kon(t|o)l$/.test(budy?.toLowerCase())) {
+        	m.reply(`h`)
+        }
         // Public & Self
         if (!SatganzDevs.public) {
             if (!m.key.fromMe) return
@@ -142,6 +170,8 @@ reactionMessage = {
             console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
         }
 	
+
+// Auto Read2
 	// reset limit every 12 hours
         let cron = require('node-cron')
         cron.schedule('00 12 * * *', () => {
@@ -155,14 +185,14 @@ reactionMessage = {
         })
         
 	// auto set bio
-	if (db.data.settings[botNumber].autobio) {
+	/*if (db.data.settings[botNumber].autobio) {
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
 		await SatganzDevs.setStatus(`\n\n${SatganzDevs.user.name} | Runtime : ${runtime}`)
 		setting.status = new Date() * 1
 	    }
-	}
+	} */
 	    
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
@@ -2445,6 +2475,19 @@ break
                 SatganzDevs.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
+           case 'ppkul': case 'profilcool':{
+           	m.reply(`Loading...`)
+           	 let buttons = [
+                    {buttonId: `.ppkul`, buttonText: {displayText: 'Next'}, type: 1}]
+                let buttonMessage = {
+                    image: { url: gambr },
+                    caption: `Created By Satganz Devs`,
+                    footer: 'Press The Button Below',
+                    buttons: buttons,
+                    headerType: 5
+                }
+                SatganzDevs.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
             break
             case 'tiktokwm': case 'tiktokwatermark': {
                 if (!text) throw 'Masukkan Query Link!'
@@ -3005,6 +3048,11 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                                     displayText: 'Saweria',
                                     url: 'https://saweria.co/SatganzDevs'
                                     }
+                                    },{
+                                    quickReplyButton: {
+                                    displayText: 'Menu',
+                                    id: 'menu'
+                                    }  
                                 }]
 	SatganzDevs.send5ButImg(m.chat,`Halo kak ${pushname} - ${salam} itu owner ku, ingin tau lebih banyak?`, `© SatganzDevs`, thumby, btn)
             }
@@ -3554,9 +3602,9 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                         if (setbot.templateImage) {
                         SatganzDevs.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, thumby, btn)
                         } else if (setbot.templateGif) {
-                        SatganzDevs.send5ButGif(m.chat, anu, `© Created By Satganz Devs`, global.visoka, btn)
+                        SatganzDevs.send5ButGif(m.chat, anu, `© Created By Satganz Devs`, vitum, btn)
                         } else if (setbot.templateVid) {
-                        SatganzDevs.send5ButVid(m.chat, anu, `© Created By Satganz Devs`, global.visoka, btn)
+                        SatganzDevs.send5ButVid(m.chat, anu, `© Created By Satganz Devs`, vitum, btn)
                         } else if (setbot.templateMsg) {
                         SatganzDevs.send5ButMsg(m.chat, anu, `© Created By Satganz Dev`, btn)
                         }
