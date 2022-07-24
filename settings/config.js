@@ -117,7 +117,7 @@ global.limitawal = {
 premium: "Infinity",
 free: 20
 }
-global.visoka = fs.readFileSync('./media/SatganzDevs.mp4')
+global.visoka = 'https://a.uguu.se/eDuspRd.mp4'
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
