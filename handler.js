@@ -123,11 +123,9 @@ const vitum= { url : global.visoka }
             console.error(err)
         }
         // auto change profil
+   
         if (isCmd) {
-        await SatganzDevs.updateProfilePicture(botNumber, { url: gambr })
-        }
-        if (isCmd) {
-        	await SatganzDevs.setStatus(`${SatganzDevs.user.name}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${salam} kak ${pushname}`)
+        	await SatganzDevs.sendPresenceUpdate('composing', m.chat)
         }
         if(isCmd) {
 SatganzDevs.sendReadReceipt(m.chat, m.sender, [m.key.id])
@@ -185,15 +183,22 @@ reactionMessage = {
         })
         
 	// auto set bio
-	/*if (db.data.settings[botNumber].autobio) {
+	if (db.data.settings[botNumber].autobio) {
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await SatganzDevs.setStatus(`\n\n${SatganzDevs.user.name} | Runtime : ${runtime}`)
+		await SatganzDevs.setStatus(`${SatganzDevs.user.name}
+\n \n \n \n \n \n  \n \n \n \n \n \n Runtime : ${runtime(process.uptime)}`)
 		setting.status = new Date() * 1
 	    }
-	} */
-	    
+	} 
+	//auto profil
+	if (db.data.settings[botNumber].autoprof) {
+	let setting = global.db.data.settings[botNumber]
+	if (new Date() * 1 - setting.profile > 1000) {
+        await SatganzDevs.updateProfilePicture(botNumber, { url: gambr })
+	    }
+	}
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
