@@ -1547,7 +1547,7 @@ break
                     let btn = [{
                                 urlButton: {
                                     displayText: 'Source Code',
-                                    url: 's.satganzdevs1.repl.co'
+                                    url: global.web
                                 }
                             }, {
                                 callButton: {
@@ -1586,7 +1586,7 @@ break
 		    let btn = [{
                                 urlButton: {
                                     displayText: 'Source Code',
-                                    url: 's.satganzdevs1.repl.co'
+                                    url: global.web
                                 }
                             }, {
                                 callButton: {
@@ -1633,7 +1633,7 @@ break
                 let btn = [{
                                 urlButton: {
                                     displayText: 'Source Code',
-                                    url: 's.satganzdevs1.repl.co'
+                                    url: global.web
                                 }
                             }]
                       let txt = `${text}`
@@ -2459,8 +2459,8 @@ break
             break
 	        case 'tiktok': case 'tiktoknowm': {
                 if (!text) throw 'Input URL' 
-	if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) throw 'Invalid URL'
-	let anu = await fetchJson(`https://api2.musical.ly/aweme/v1/aweme/detail/?aweme_id=${q}`)
+	if (!text) throw 'Masukkan Query Link!'
+	let anu = await fetchJson(api('zenz', '/downloader/musically', { url: text }, 'apikey'))
 	 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
@@ -3575,7 +3575,7 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                 let btn = [{
                                 urlButton: {
                                     displayText: 'Source Code',
-                                    url: 's.satganzdevs1.repl.co'
+                                    url: global.web
                                 }
                             }, {
                                 callButton: {
